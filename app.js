@@ -8,9 +8,14 @@ let level = 0;
 
 let h2 = document.querySelector("h2");
 
-// Start listeners (for both mobile and desktop)
+// ✅ Event listeners to start the game
 document.addEventListener("keypress", handleStart);
-document.addEventListener("click", handleStart);
+document.addEventListener("click", function (e) {
+  // ✅ Only start if clicked outside the buttons
+  if (!e.target.classList.contains("btn") && !started) {
+    handleStart();
+  }
+});
 
 function handleStart() {
   if (!started) {
@@ -77,7 +82,7 @@ for (let btn of allBtns) {
 }
 
 function gameOver() {
-  h2.innerHTML = `Game Over! Your score was <b>${level}</b><br>Tap anywhere or press any key to restart`;
+  h2.innerHTML = `Game Over! Your score was <b>${level}</b><br>Tap outside buttons or press a key to restart`;
   document.body.style.backgroundColor = "red";
 
   setTimeout(() => {
