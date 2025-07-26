@@ -14,6 +14,7 @@ document.addEventListener("click", startGame);
 function startGame() {
   if (!started) {
     started = true;
+      h2.innerText = `Level ${level}`;
     levelUp();
   }
 }
@@ -52,12 +53,19 @@ function checkAns(idx) {
       setTimeout(levelUp, 1000);
     }
   } else {
-    h2.innerHTML = `Game Over! Your score was <b>${level}</b><br>Press any key to start the game`;
-    document.querySelector("body").style.backgroundColor = "red";
-    setTimeout(() => {
-      document.querySelector("body").style.backgroundColor = "white";
-    }, 150);
-    reset();
+    h2.innerHTML = `Game Over! Your score was <b>${level}</b><br>Tap anywhere or press any key to restart`;
+document.querySelector("body").style.backgroundColor = "red";
+
+setTimeout(() => {
+  document.querySelector("body").style.backgroundColor = "white";
+}, 150);
+
+// Wait for user to press again to restart
+document.addEventListener("keypress", startGame);
+document.addEventListener("click", startGame);
+
+reset();
+
   }
 }
 
