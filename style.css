@@ -1,41 +1,91 @@
-body{
+/* Base styles */
+body {
     text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-.btn{
-    height: 200px;
-    width: 200px;
-    border: 10px solid black;
-    border-radius: 20%;
-    margin: 2.5rem;
-    
-}
-
-.btn-container{
+/* Container for buttons */
+.btn-container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;  /* allow wrapping on smaller screens */
+    max-width: 480px; /* max width to limit stretching on big screens */
+    margin: 0 auto;   /* center container */
+    gap: 1rem;        /* space between buttons */
 }
 
-.red{
+/* Each line of buttons */
+.line-one, .line-two {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+/* Buttons */
+.btn {
+    flex: 1 1 40%;       /* flex-grow, flex-shrink, flex-basis 40% */
+    max-width: 200px;    /* max size on large screens */
+    height: 150px;       /* slightly smaller height */
+    border: 10px solid black;
+    border-radius: 20%;
+    margin: 0;           /* margin handled by gap */
+    font-size: 2rem;
+    line-height: 150px;
+    color: black;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+}
+
+/* Colors */
+.red {
     background-color: lightcoral;
 }
 
-.yellow{
+.yellow {
     background-color: lightgreen;
 }
 
-.green{
+.green {
     background-color: lightseagreen;
 }
 
-.blue{
+.blue {
     background-color: lightblue;
 }
 
-.flash{
-    background-color: white;
+/* Flash effect */
+.flash {
+    background-color: white !important;
 }
 
-.userflash{
-    background-color: green;
+.userflash {
+    background-color: green !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .btn-container {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+
+    .btn {
+        flex-basis: 45%;   /* buttons take nearly half the width */
+        height: 120px;
+        font-size: 1.5rem;
+        line-height: 120px;
+    }
+}
+
+@media (max-width: 400px) {
+    .btn {
+        flex-basis: 90%;   /* full width buttons on very small screens */
+        height: 100px;
+        font-size: 1.2rem;
+        line-height: 100px;
+    }
 }
