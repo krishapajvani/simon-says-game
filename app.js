@@ -8,13 +8,17 @@ let level = 0;
 
 let h2 = document.querySelector("h2");
 
-document.addEventListener("keypress", startGame);
-document.addEventListener("click", startGame);
+// Start listeners (for both mobile and desktop)
+document.addEventListener("keypress", handleStart);
+document.addEventListener("click", handleStart);
 
-function startGame() {
+function handleStart() {
   if (!started) {
     started = true;
-      h2.innerText = `Level ${level}`;
+    level = 0;
+    gameSeq = [];
+    userSeq = [];
+    h2.innerText = `Level ${level + 1}`;
     levelUp();
   }
 }
@@ -38,13 +42,11 @@ function levelUp() {
   level++;
   h2.innerText = `Level ${level}`;
 
-  // generate random sequence
   let randInd = Math.floor(Math.random() * btns.length);
-  let randcolor = btns[randInd];
-  let randbtn = document.querySelector(`.${randcolor}`);
-  gameSeq.push(randcolor);
-  console.log(gameSeq);
-  gameflash(randbtn);
+  let randColor = btns[randInd];
+  let randBtn = document.querySelector(`#${randColor}`);
+  gameSeq.push(randColor);
+  gameflash(randBtn);
 }
 
 function checkAns(idx) {
@@ -53,23 +55,13 @@ function checkAns(idx) {
       setTimeout(levelUp, 1000);
     }
   } else {
-    h2.innerHTML = `Game Over! Your score was <b>${level}</b><br>Tap anywhere or press any key to restart`;
-document.querySelector("body").style.backgroundColor = "red";
-
-setTimeout(() => {
-  document.querySelector("body").style.backgroundColor = "white";
-}, 150);
-
-// Wait for user to press again to restart
-document.addEventListener("keypress", startGame);
-document.addEventListener("click", startGame);
-
-reset();
-
+    gameOver();
   }
 }
 
 function btnPress() {
+  if (!started) return;
+
   let btn = this;
   userflash(btn);
 
@@ -84,7 +76,15 @@ for (let btn of allBtns) {
   btn.addEventListener("click", btnPress);
 }
 
-function reset() {
+function gameOver() {
+  h2.innerHTML = `Game Over! Your score was <b>${level}</b><br>Tap anywhere or press any key to restart`;
+  document.body.style.backgroundColor = "red";
+
+  setTimeout(() => {
+    document.body.style.backgroundColor = "white";
+  }, 150);
+
+  // Reset flags but don't auto-start
   started = false;
   gameSeq = [];
   userSeq = [];
