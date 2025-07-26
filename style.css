@@ -1,91 +1,92 @@
 /* Base styles */
 body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 /* Container for buttons */
 .btn-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;  /* allow wrapping on smaller screens */
-    max-width: 480px; /* max width to limit stretching on big screens */
-    margin: 0 auto;   /* center container */
-    gap: 1rem;        /* space between buttons */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 480px;
+  margin: 0 auto;
+  gap: 1rem;
 }
 
 /* Each line of buttons */
-.line-one, .line-two {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    width: 100%;
+.line-one,
+.line-two {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
 }
 
 /* Buttons */
 .btn {
-    flex: 1 1 40%;       /* flex-grow, flex-shrink, flex-basis 40% */
-    max-width: 200px;    /* max size on large screens */
-    height: 150px;       /* slightly smaller height */
-    border: 10px solid black;
-    border-radius: 20%;
-    margin: 0;           /* margin handled by gap */
-    font-size: 2rem;
-    line-height: 150px;
-    color: black;
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.3s ease;
+  flex: 1 1 40%;
+  max-width: 200px;
+  height: 150px;
+  border: 10px solid black;
+  border-radius: 20%;
+  margin: 0;
+  font-size: 2rem;
+  line-height: 150px;
+  color: black;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
 }
 
 /* Colors */
 .red {
-    background-color: lightcoral;
+  background-color: lightcoral;
 }
 
 .yellow {
-    background-color: lightgreen;
+  background-color: lightgreen;
 }
 
 .green {
-    background-color: lightseagreen;
+  background-color: lightseagreen;
 }
 
 .blue {
-    background-color: lightblue;
+  background-color: lightblue;
 }
 
 /* Flash effect */
 .flash {
-    background-color: white !important;
+  background-color: white !important;
 }
 
 .userflash {
-    background-color: green !important;
+  background-color: green !important;
 }
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
-    .btn-container {
-        max-width: 100%;
-        padding: 0 1rem;
-    }
+  .btn-container {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
 
-    .btn {
-        flex-basis: 45%;   /* buttons take nearly half the width */
-        height: 120px;
-        font-size: 1.5rem;
-        line-height: 120px;
-    }
+  .btn {
+    flex-basis: 45%;
+    height: 120px;
+    font-size: 1.5rem;
+    line-height: 120px;
+  }
 }
 
 @media (max-width: 400px) {
-    .btn {
-        flex-basis: 90%;   /* full width buttons on very small screens */
-        height: 100px;
-        font-size: 1.2rem;
-        line-height: 100px;
-    }
+  .btn {
+    flex-basis: 90%;
+    height: 100px;
+    font-size: 1.2rem;
+    line-height: 100px;
+  }
 }
